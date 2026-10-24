@@ -12,4 +12,7 @@ Working notes. The "Explain it" answers in the README come from here.
 (Nothing yet.)
 
 ## Decisions (what we chose, what we rejected)
-(Nothing yet.)
+- 2026-10-24: Studio is **Jenga Studios** (Dan's choice). A first draft called "Udongo Studio" was proposed and replaced.
+- 2026-10-24: Dan let the AI draft the services, reference sites, fonts and colours and said he will correct anything he dislikes. The README marks them as drafts for Dan to confirm.
+- 2026-10-24: Plain CSS with variables, not Tailwind (one fewer library to justify). Stack: React + Vite.
+- 2026-10-24: Contrast script found terracotta text on sand fails (3.83:1). Rule: no terracotta text on sand.
