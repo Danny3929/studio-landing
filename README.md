@@ -55,8 +55,17 @@ Calculated with the WCAG contrast formula (script run on 2026-10-24). Body text 
 
 **Rule from this check:** never put terracotta text or icons on the sand background. Use deep green or charcoal there. Only the real page, checked in Lighthouse, will prove the final result.
 
+### Layout direction: "Bricks" (chosen 2026-10-24)
+Three directions were sketched: A (Editorial), B (Bricks) and C (Immersive green). **B was chosen** because the layout itself carries the name *Jenga* (build, stack, blocks):
+- a brick-course band under the hero;
+- services shown as coloured bricks of different widths;
+- featured work in a staggered grid;
+- pricing as a staircase that grows with each tier.
+
+Why B and not A or C: TODO (Dan: write this in your own words, it is an Explain-it answer).
+
 ### Spacing
-An 8px scale: 8, 16, 24, 32, 48, 64.
+An 8px scale: 8, 16, 24, 32, 48, 64, 96.
 
 ## Screenshots
 TODO (desktop and mobile).
