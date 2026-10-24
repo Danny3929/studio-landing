@@ -3,7 +3,7 @@
 Working notes. The "Explain it" answers in the README come from here.
 
 ## What the AI got wrong
-(Nothing yet. Add one line each time the AI is wrong.)
+- 2026-10-24: The AI told Dan to invent a studio name and said nothing was chosen, because it had not read an earlier proposal (Udongo Studio) saved by another session. Dan noticed ("I thought you had already chosen it?"). Fix: read the saved chat file before answering about earlier messages.
 
 ## Accessibility problems found
 (Nothing yet.)
