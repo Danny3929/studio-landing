@@ -6,10 +6,12 @@ Working notes. The "Explain it" answers in the README come from here.
 - 2026-10-24: The AI told Dan to invent a studio name and said nothing was chosen, because it had not read an earlier proposal (Udongo Studio) saved by another session. Dan noticed ("I thought you had already chosen it?"). Fix: read the saved chat file before answering about earlier messages.
 
 ## Accessibility problems found
-(Nothing yet.)
+- 2026-10-24: My README rule banned terracotta icons on sand, but graphics only need 3:1 (3.83:1 passes). Text needs 4.5:1. Rule corrected to apply to text only.
 
 ## Bugs and their causes
-(Nothing yet.)
+- 2026-10-24 (mockup): service icons on coloured bricks were turned white with a CSS filter. Pure white is not in the palette. Fix: recolour with palette tokens. My first fix recoloured the child shapes but not the icon's own stroke, so two icons nearly vanished. Found only by looking at the screenshot.
+- 2026-10-24 (mockup): work pictures were cropped (`preserveAspectRatio="slice"`), cutting off the cup handle and the knife. Fix: `meet`.
+- 2026-10-24 (mockup): a cup fill used cream at 15% opacity, a blended colour outside the palette. Fix: solid palette green.
 
 ## Decisions (what we chose, what we rejected)
 - 2026-10-24: Studio is **Jenga Studios** (Dan's choice). A first draft called "Udongo Studio" was proposed and replaced.

@@ -53,7 +53,14 @@ Calculated with the WCAG contrast formula (script run on 2026-10-24). Body text 
 | Cream on deep green | 8.81:1 | Pass |
 | **Terracotta on sand** | **3.83:1** | **Fail** |
 
-**Rule from this check:** never put terracotta text or icons on the sand background. Use deep green or charcoal there. Only the real page, checked in Lighthouse, will prove the final result.
+**Rule from this check:** never put terracotta **text** on the sand background (needs 4.5:1, gets 3.83:1). Use deep green or charcoal for text there. Terracotta **graphics** (icon accents, shapes) on sand are allowed, because graphics only need 3:1 and 3.83:1 passes. Only the real page, checked in Lighthouse, will prove the final result.
+
+### Drawings (illustration rules)
+Checked on 2026-10-24 against the tokens above, for the hero tower, the four service icons and the three featured-work pictures:
+- **Colours:** only the five palette colours, written as tokens (`var(--green)`), never hex values or blended tints. On dark or terracotta backgrounds, icons use cream outlines and sand accents. Pure white is not allowed.
+- **Line weight:** every outline is 3px on screen at any size (the SVGs use `vector-effect: non-scaling-stroke`). Shapes drawn with a stroke (the acacia trunk, the cutlery) are 6px. Fine dashes are 2px.
+- **No cropping:** pictures are fitted inside their frame (`preserveAspectRatio="xMidYMid meet"`), never cut off.
+- **Accessibility:** purely decorative drawings (icons, featured-work pictures) are hidden from screen readers with `aria-hidden="true"`. The hero tower has a text label. The caption under each picture carries the meaning.
 
 ### Layout direction: "Bricks" (chosen 2026-10-24)
 Three directions were sketched: A (Editorial), B (Bricks) and C (Immersive green). **B was chosen** because the layout itself carries the name *Jenga* (build, stack, blocks):
