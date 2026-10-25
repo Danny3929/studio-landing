@@ -5,6 +5,8 @@ Working notes. The "Explain it" answers in the README come from here.
 ## What the AI got wrong
 - 2026-10-24: The AI told Dan to invent a studio name and said nothing was chosen, because it had not read an earlier proposal (Udongo Studio) saved by another session. Dan noticed ("I thought you had already chosen it?"). Fix: read the saved chat file before answering about earlier messages.
 
+- 2026-10-24: My first "fonts blocked" test looked fine only because the browser had cached the fonts from earlier runs, so it proved nothing. Rule: run offline/failure tests with a fresh browser profile. Redone: the page falls back to Georgia and system sans and stays readable.
+
 ## Accessibility problems found
 - 2026-10-24: My README rule banned terracotta icons on sand, but graphics only need 3:1 (3.83:1 passes). Text needs 4.5:1. Rule corrected to apply to text only.
 
