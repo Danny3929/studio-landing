@@ -1,0 +1,50 @@
+/* Trust strip: a sand band with four short promises. Mobile first: two columns, one column on very small screens.
+   From 900px up the four sit in one row. Only tokens are used. */
+
+.trust {
+  padding-block: var(--space-4);
+  background: var(--color-surface);
+}
+
+.trust__list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.trust__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-width: 0;
+  font-weight: 700;
+  /* A very long word must wrap, not push the page wider than the screen. */
+  overflow-wrap: anywhere;
+}
+
+/* A small brick before each promise. Decorative: hidden from screen readers. */
+.trust__brick {
+  flex: none;
+  width: 20px;
+  height: 10px;
+  border: 2px solid var(--color-text);
+  border-radius: 3px;
+  background: var(--color-cta);
+  box-sizing: content-box;
+}
+
+@media (min-width: 480px) {
+  .trust__list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 900px) {
+  .trust__list {
+    grid-template-columns: repeat(4, minmax(0, auto));
+    justify-content: space-between;
+  }
+}
