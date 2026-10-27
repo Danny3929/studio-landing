@@ -2,7 +2,7 @@
 
 A landing page for a fictional digital studio. Everything here is invented: no real client, company or asset.
 
-> Status (2026-10-27): work in progress. Built and checked so far: navigation bar, Hero, Services and Work (with filter). Still to build: trust strip, testimonials, pricing, FAQ, contact form, footer, light/dark theme and scroll animations. Sections below marked "TODO" are filled in as the work is done.
+> Status (2026-10-27): work in progress. Built and checked so far: navigation bar, Hero, Services, Work (with filter) and Pricing (with monthly/annual toggle). Still to build: trust strip, testimonials, FAQ, contact form, footer, light/dark theme and scroll animations. Sections below marked "TODO" are filled in as the work is done.
 
 ## Design decisions
 
