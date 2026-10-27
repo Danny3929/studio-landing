@@ -7,8 +7,9 @@ import Faq from './components/Faq.jsx'
 import Contact from './components/Contact.jsx'
 import TrustStrip from './components/TrustStrip.jsx'
 import Footer from './components/Footer.jsx'
+import Testimonials from './components/Testimonials.jsx'
 
-// The page is built one section at a time. Sections still to come: testimonials.
+// The page is built one section at a time. Still to come: scroll animations.
 export default function App() {
   return (
     <>
@@ -21,6 +22,7 @@ export default function App() {
         <TrustStrip />
         <Services />
         <Work />
+        <Testimonials />
         <Pricing />
         <Faq />
         <Contact />
