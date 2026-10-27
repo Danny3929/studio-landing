@@ -2,9 +2,10 @@ import Nav from './components/Nav.jsx'
 import Hero from './components/Hero.jsx'
 import Services from './components/Services.jsx'
 import Work from './components/Work.jsx'
+import Pricing from './components/Pricing.jsx'
 
 // The page is built one section at a time. Sections still to come: trust strip,
-// testimonials, pricing, FAQ, contact and footer.
+// testimonials, FAQ, contact and footer.
 export default function App() {
   return (
     <>
@@ -16,6 +17,7 @@ export default function App() {
         <Hero />
         <Services />
         <Work />
+        <Pricing />
       </main>
     </>
   )
