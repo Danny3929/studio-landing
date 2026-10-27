@@ -19,6 +19,8 @@ Working notes. The "Explain it" answers in the README come from here.
 - 2026-10-27: Work grid: break tests done with changed data, not only changed code. A new filter with no projects shows "No projects in this category yet." and "Showing 0 of 4 projects"; a project with an unknown drawing name still gets a tile (no picture, no crash). Then two code breaks, to prove the checks can fail: removing `aria-pressed` failed 3 checks; matching only a project's first category failed the "a project can be in two categories" check.
 - 2026-10-27: Tech debt noticed: the eyebrow text style is copied in `hero.css`, `services.css` and `work.css`, and the section title style in two of them. To share in one refactor later (with the tests re-run).
 
+- 2026-10-27: My Hero test script had two bugs of its own: a shell heredoc turned my double backslashes into single ones, which changed the patterns (the text check and the colour parser both failed). Rule: write test patterns without backslashes, or write the file with the editor tool, not a heredoc.
+
 ## Accessibility problems found
 - 2026-10-27: Work filter built as toggle buttons with `aria-pressed` (not ARIA tabs, because there is one grid that changes, not separate panels). Status line is a live region ("Showing 2 of 3 projects"). Tiles that do not match are removed from the page so Tab cannot reach them. Focus stays on the pressed button. Measured contrast: buttons 8.81:1, tile text 11.31:1, status 13.57:1. Drawings are centred (within 0.2 units) and hidden from screen readers; the caption carries the meaning.
 - 2026-10-27: Services: heading order h1 > h2 > h3, services are a real list (4 items), icons hidden from screen readers (the text carries the meaning). Contrast measured from the rendered page: terracotta brick 4.59:1 (text and lines), sand 11.31:1, green 8.81:1, charcoal 13.57:1; icon accents all at least 3.83:1 (graphics need 3:1). An empty `benefit` no longer leaves an empty paragraph.
@@ -32,6 +34,7 @@ Working notes. The "Explain it" answers in the README come from here.
 - 2026-10-24 (mockup): a cup fill used cream at 15% opacity, a blended colour outside the palette. Fix: solid palette green.
 
 ## Decisions (what we chose, what we rejected)
+- 2026-10-27: Hero wording changed to "Build a brand people trust. Build a business that lasts." Dan chose it over his first draft because of length. Measured: old wording 6 lines at 390px and 1280px, buttons at 822px of 800px (below the fold); new wording 4 lines at both, buttons at 686px of 800px. The hero test fails on the old wording (4 of 10 checks) and passes on the new one (10 of 10).
 - 2026-10-24: Studio is **Jenga Studios** (Dan's choice). A first draft called "Udongo Studio" was proposed and replaced.
 - 2026-10-24: Dan let the AI draft the services, reference sites, fonts and colours and said he will correct anything he dislikes. The README marks them as drafts for Dan to confirm.
 - 2026-10-24: Plain CSS with variables, not Tailwind (one fewer library to justify). Stack: React + Vite.

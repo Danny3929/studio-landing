@@ -2,7 +2,7 @@
 
 A landing page for a fictional digital studio. Everything here is invented: no real client, company or asset.
 
-> Status: design decisions only. Nothing is built yet. Sections below marked "TODO" are filled in as the work is done.
+> Status (2026-10-27): work in progress. Built and checked so far: navigation bar, Hero, Services and Work (with filter). Still to build: trust strip, testimonials, pricing, FAQ, contact form, footer, light/dark theme and scroll animations. Sections below marked "TODO" are filled in as the work is done.
 
 ## Design decisions
 
@@ -23,6 +23,11 @@ A landing page for a fictional digital studio. Everything here is invented: no r
 | Aesop | Calm serif headings, warm tones, generous white space | Its heavy product photography |
 | Pentagram | A confident, simple featured-work grid | Its very plain navigation |
 | Stripe | Three pricing cards with the middle one highlighted | Its busy gradients |
+
+### Hero wording (chosen 2026-10-27)
+- **Headline:** "Build a brand people trust. Build a business that lasts."
+- **Supporting line:** "Jenga Studios helps Kenyan businesses build a brand people remember and a website that brings them customers."
+- **Why this wording:** the first draft ("Build a brand that commands respect. Build a digital presence that converts.") was replaced because of its length. Measured in a real browser: the first draft took 6 lines on both a 390px phone and a 1280px laptop, and on a standard 1280 x 800 laptop window the "Start your project" button ended below the bottom of the screen (822px of 800px). The chosen wording takes 4 lines on both, and the buttons end at 686px of 800px. It also avoids marketing words ("converts", "scale") and claims we cannot prove yet ("high-performance", "commands respect").
 
 ### Fonts (both free on Google Fonts)
 - Headings: **Fraunces**, a warm serif.
