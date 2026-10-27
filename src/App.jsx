@@ -1,9 +1,11 @@
-// Placeholder for slice 1: proves the tokens and fonts load. The real sections replace this one at a time.
+import Hero from './components/Hero.jsx'
+
+// The page is built one section at a time. Sections still to come: nav, trust strip, services,
+// work, testimonials, pricing, FAQ, contact and footer.
 export default function App() {
   return (
-    <main className="container" style={{ paddingBlock: 'var(--space-8)' }}>
-      <h1 style={{ fontSize: 'var(--text-hero)' }}>Jenga Studios</h1>
-      <p>Scaffold check: if this heading is a serif and the page is cream, the tokens work.</p>
+    <main>
+      <Hero />
     </main>
   )
 }
