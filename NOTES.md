@@ -7,7 +7,11 @@ Working notes. The "Explain it" answers in the README come from here.
 
 - 2026-10-24: My first "fonts blocked" test looked fine only because the browser had cached the fonts from earlier runs, so it proved nothing. Rule: run offline/failure tests with a fresh browser profile. Redone: the page falls back to Georgia and system sans and stays readable.
 
+- 2026-10-27: My first Hero "blank headline" break test proved nothing: the screenshot came from the wrong server (a leftover preview on another port), so it showed the real page. Rule: before trusting a failure test, confirm the server is serving the broken copy (the built file must lack the text). Redone on a clean port: the headline vanished, so the check can fail.
+- 2026-10-27: The Hero drawing was added without the README rule "every outline is 3px on screen at any size", so its lines got thinner on phones. Fixed with `vector-effect: non-scaling-stroke` in `hero.css`.
+
 ## Accessibility problems found
+- 2026-10-27: If the headline text is ever empty, the Hero renders an empty `<h1>`, so screen readers get a heading with no words. Nothing in the code guards against it yet. Content now lives in `src/data/hero.js`; a test or check for empty text should be added later.
 - 2026-10-24: My README rule banned terracotta icons on sand, but graphics only need 3:1 (3.83:1 passes). Text needs 4.5:1. Rule corrected to apply to text only.
 
 ## Bugs and their causes
