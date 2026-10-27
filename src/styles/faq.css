@@ -1,0 +1,115 @@
+/* FAQ section. Mobile first: heading above the list. Two columns from 900px up.
+   Only tokens are used for colour, space and type. The +/- sign is drawn in CSS. */
+
+.faq {
+  padding-block: var(--space-8);
+}
+
+.faq__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+.faq__eyebrow {
+  margin: 0 0 var(--space-1);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.faq__title {
+  max-width: 24ch;
+  font-size: var(--text-2xl);
+  overflow-wrap: break-word;
+}
+
+.faq__list {
+  display: grid;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.faq-item {
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.faq-item__heading {
+  margin: 0;
+  font-size: inherit;
+}
+
+.faq-item__button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  width: 100%;
+  min-height: 56px;
+  padding: var(--space-2) var(--space-3);
+  border: 0;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  line-height: var(--leading-heading);
+  text-align: left;
+  cursor: pointer;
+}
+
+.faq-item__question {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* The sign: a horizontal bar, plus a vertical bar that disappears when the row is open. */
+.faq-item__sign {
+  position: relative;
+  flex: none;
+  width: 20px;
+  height: 20px;
+}
+
+.faq-item__sign::before,
+.faq-item__sign::after {
+  content: '';
+  position: absolute;
+  inset: 50% 0 auto;
+  height: 3px;
+  margin-top: -1.5px;
+  border-radius: 2px;
+  background: var(--color-accent);
+}
+
+.faq-item__sign::after {
+  transform: rotate(90deg);
+}
+
+.faq-item--open .faq-item__sign::after {
+  transform: rotate(0deg);
+}
+
+.faq-item__panel {
+  padding: 0 var(--space-3) var(--space-3);
+}
+
+.faq-item__answer {
+  margin: 0;
+  max-width: 62ch;
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 900px) {
+  .faq__grid {
+    grid-template-columns: 1fr 1.4fr;
+    gap: var(--space-8);
+    align-items: start;
+  }
+}
