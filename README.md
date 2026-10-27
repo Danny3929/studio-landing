@@ -2,7 +2,7 @@
 
 A landing page for a fictional digital studio. Everything here is invented: no real client, company or asset.
 
-> Status (2026-10-27): work in progress. Built and checked so far: navigation bar, Hero, Services, Work (with filter) and Pricing (with monthly/annual toggle), FAQ accordion, Contact form (validates, but does not send: demo only), trust strip and footer. Still to build: testimonials, light/dark theme and scroll animations. Sections below marked "TODO" are filled in as the work is done.
+> Status (2026-10-27): work in progress. Built and checked so far: navigation bar, Hero, Services, Work (with filter) and Pricing (with monthly/annual toggle), FAQ accordion, Contact form (validates, but does not send: demo only), trust strip, footer and the light/dark theme toggle. Still to build: testimonials and scroll animations. Sections below marked "TODO" are filled in as the work is done.
 
 ## Design decisions
 
@@ -33,7 +33,7 @@ A landing page for a fictional digital studio. Everything here is invented: no r
 - Headings: **Fraunces**, a warm serif.
 - Body: **DM Sans**, clean and readable at small sizes.
 
-### Colours (light theme)
+### Colours (light theme; dark theme below)
 | Job | Colour | Hex |
 |---|---|---|
 | Page background | Cream | `#FAF3E8` |
@@ -43,6 +43,22 @@ A landing page for a fictional digital studio. Everything here is invented: no r
 | Soft background (cards, strips) | Sand | `#EADFC8` |
 
 The dark theme is not designed yet (TODO). It will be checked the same way.
+
+### Dark theme (added 2026-10-28)
+The theme follows the visitor's system setting until they press the button; then their choice is saved in the browser (`localStorage`, key `jenga-theme`, value `light` or `dark`) and wins. A small script in `index.html` sets the theme before the page paints, so there is no white flash.
+
+The dark theme only changes the *role* tokens in `src/styles/tokens.css` (`[data-theme='dark']`). Our five palette colours stay. Two lighter shades were added so that text passes 4.5:1 on a dark page, and one very dark page colour:
+
+| Job | Dark value | Contrast on the dark page (#1d1917) |
+|---|---|---|
+| Page background | #1d1917 (a darker charcoal) | n/a |
+| Text | cream #faf3e8 | 15.83:1 |
+| Cards and form | charcoal #2b2623 | cream text on it 13.57:1 |
+| Accent (links, eyebrows, buttons) | #9cc4ab (a lighter green) | 9.05:1 |
+| Highlight (terracotta used as text) | #d9714d (a lighter terracotta) | 5.33:1 |
+| Call-to-action button | terracotta #b5502f with cream text | 4.59:1 (unchanged) |
+
+Terracotta text directly on the dark page is only 3.45:1, which is why the highlight shade exists. The services bricks, work tiles and footer keep their palette colours in both themes. The Hero drawing uses an `--color-ink` outline (charcoal in light, cream in dark).
 
 ### Contrast check (light theme)
 Calculated with the WCAG contrast formula (script run on 2026-10-24). Body text needs at least 4.5:1.
