@@ -5,12 +5,12 @@ import { useEffect } from 'react'
 //  - Tab and Shift+Tab wrap around inside the header, so focus cannot wander to the page behind it.
 //  - A click outside the header closes it.
 //  - Growing the window to laptop size closes it (the Menu button is hidden there).
-export function useMenuKeys({ open, close, toggleRef, panelRef }) {
+export function useMenuKeys({ open, close, toggleRef, themeRef, panelRef }) {
   useEffect(() => {
     if (!open) return undefined
 
-    // Everything that can take focus inside the open menu: the Menu button first, then the links.
-    const focusable = () => [toggleRef.current, ...panelRef.current.querySelectorAll('a[href]')]
+    // Everything that can take focus inside the open menu, in page order: the theme button, the Menu button, then the links.
+    const focusable = () => [themeRef.current, toggleRef.current, ...panelRef.current.querySelectorAll('a[href]')].filter(Boolean)
 
     function onKeyDown(event) {
       if (event.key === 'Escape') {
@@ -55,5 +55,5 @@ export function useMenuKeys({ open, close, toggleRef, panelRef }) {
       document.removeEventListener('pointerdown', onPointerDown)
       laptop.removeEventListener('change', onResize)
     }
-  }, [open, close, toggleRef, panelRef])
+  }, [open, close, toggleRef, themeRef, panelRef])
 }

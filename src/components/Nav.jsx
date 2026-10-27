@@ -1,5 +1,7 @@
 import { useCallback, useRef, useState } from 'react'
 import { nav } from '../data/nav.js'
+import { useTheme } from '../hooks/useTheme.js'
+import ThemeToggle from './ThemeToggle.jsx'
 import { useMenuKeys } from '../hooks/useMenuKeys.js'
 import '../styles/nav.css'
 
@@ -8,10 +10,12 @@ import '../styles/nav.css'
 export default function Nav() {
   const [open, setOpen] = useState(false)
   const toggleRef = useRef(null)
+  const themeRef = useRef(null)
+  const { theme, toggle: toggleTheme } = useTheme()
   const panelRef = useRef(null)
   const close = useCallback(() => setOpen(false), [])
 
-  useMenuKeys({ open, close, toggleRef, panelRef })
+  useMenuKeys({ open, close, toggleRef, themeRef, panelRef })
 
   return (
     <header className="nav">
@@ -23,16 +27,20 @@ export default function Nav() {
           </span>
         </a>
 
-        <button
-          ref={toggleRef}
-          type="button"
-          className="nav__toggle"
-          aria-expanded={open}
-          aria-controls="site-menu"
-          onClick={() => setOpen((isOpen) => !isOpen)}
-        >
-          {open ? 'Close' : 'Menu'}
-        </button>
+        {/* Tab order = visual order: logo, theme button, Menu button, then the links. */}
+        <div className="nav__tools">
+          <ThemeToggle ref={themeRef} dark={theme === 'dark'} onToggle={toggleTheme} />
+          <button
+            ref={toggleRef}
+            type="button"
+            className="nav__toggle"
+            aria-expanded={open}
+            aria-controls="site-menu"
+            onClick={() => setOpen((isOpen) => !isOpen)}
+          >
+            {open ? 'Close' : 'Menu'}
+          </button>
+        </div>
 
         <nav id="site-menu" ref={panelRef} className={open ? 'nav__menu is-open' : 'nav__menu'} aria-label="Main">
           <ul className="nav__list">
