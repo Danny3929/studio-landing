@@ -1,9 +1,10 @@
 import Nav from './components/Nav.jsx'
 import Hero from './components/Hero.jsx'
 import Services from './components/Services.jsx'
+import Work from './components/Work.jsx'
 
 // The page is built one section at a time. Sections still to come: trust strip,
-// work, testimonials, pricing, FAQ, contact and footer.
+// testimonials, pricing, FAQ, contact and footer.
 export default function App() {
   return (
     <>
@@ -14,6 +15,7 @@ export default function App() {
       <main id="main" tabIndex={-1}>
         <Hero />
         <Services />
+        <Work />
       </main>
     </>
   )
