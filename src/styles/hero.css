@@ -29,7 +29,7 @@
 .hero__title-second {
   display: block;
   font-style: italic;
-  color: var(--color-cta);
+  color: var(--color-highlight);
 }
 
 .hero__lead {

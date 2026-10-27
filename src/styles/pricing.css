@@ -51,7 +51,7 @@
 
 .billing__button[aria-pressed='true'] {
   background: var(--color-accent);
-  color: var(--cream);
+  color: var(--color-on-accent);
 }
 
 .billing__save {
@@ -85,7 +85,7 @@
 /* The highlighted tier. No CSS `order`: the visual order must match the Tab order. */
 .tier--featured {
   background: var(--color-accent);
-  color: var(--cream);
+  color: var(--color-on-accent);
 }
 
 .tier__badge {
@@ -93,7 +93,7 @@
   margin: 0 0 var(--space-1);
   padding: 4px var(--space-2);
   border-radius: var(--radius-pill);
-  background: var(--cream);
+  background: var(--color-on-accent);
   color: var(--color-accent);
   font-size: var(--text-sm);
   font-weight: 700;
@@ -145,9 +145,9 @@
   align-self: flex-start;
 }
 
-/* Button on the green card: cream button with green text keeps the contrast high */
+/* Button on the highlighted card: the colours swap, which keeps the contrast high in both themes */
 .tier--featured .btn--primary {
-  background: var(--cream);
+  background: var(--color-on-accent);
   color: var(--color-accent);
 }
 

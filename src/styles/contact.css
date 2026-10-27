@@ -48,9 +48,9 @@
 .contact-form__summary {
   margin: 0;
   padding: var(--space-2);
-  border: 2px solid var(--color-cta);
+  border: 2px solid var(--color-highlight);
   border-radius: var(--radius-md);
-  background: var(--cream);
+  background: var(--color-field);
   font-weight: 700;
 }
 
@@ -79,7 +79,7 @@
   padding: 10px var(--space-2);
   border: 2px solid var(--color-accent);
   border-radius: var(--radius-md);
-  background: var(--cream);
+  background: var(--color-field);
   color: var(--color-text);
   font: inherit;
 }
@@ -89,7 +89,7 @@ textarea.field__control {
 }
 
 .field--error .field__control {
-  border-color: var(--color-cta);
+  border-color: var(--color-highlight);
 }
 
 .field__hint {
@@ -106,7 +106,7 @@ textarea.field__control {
 }
 
 .field__error span {
-  color: var(--color-cta);
+  color: var(--color-highlight);
 }
 
 /* Thank-you message */
@@ -117,7 +117,7 @@ textarea.field__control {
   padding: var(--space-3);
   border-radius: var(--radius-lg);
   background: var(--color-accent);
-  color: var(--cream);
+  color: var(--color-on-accent);
 }
 
 .contact-success p {
@@ -130,8 +130,8 @@ textarea.field__control {
 
 .contact-success .btn--ghost {
   justify-self: start;
-  border-color: var(--cream);
-  color: var(--cream);
+  border-color: var(--color-on-accent);
+  color: var(--color-on-accent);
   font-family: inherit;
   cursor: pointer;
 }

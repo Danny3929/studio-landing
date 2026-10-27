@@ -46,7 +46,7 @@
 
 .work-filter__button[aria-pressed='true'] {
   background: var(--color-accent);
-  color: var(--cream);
+  color: var(--color-on-accent);
 }
 
 .work__status {

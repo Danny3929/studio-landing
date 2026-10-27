@@ -3,7 +3,8 @@
 
 .footer {
   padding-block: var(--space-8) var(--space-4);
-  background: var(--color-text);
+  /* The footer is charcoal in both themes, so it uses the palette colour, not the text role (which turns cream in dark). */
+  background: var(--charcoal);
   color: var(--cream);
 }
 

@@ -43,17 +43,17 @@ export default function Hero() {
             strokeLinecap="round"
           />
           <rect x="0" y="331" width="420" height="49" fill="var(--sand)" />
-          <path d="M0 330h420" stroke="var(--charcoal)" strokeWidth="3" />
+          <path d="M0 330h420" stroke="var(--color-ink)" strokeWidth="3" />
           <path
             d="M330 330c2-40 0-70-6-100m6 40c14-20 30-30 48-36"
-            stroke="var(--charcoal)"
+            stroke="var(--color-ink)"
             strokeWidth="6"
             fill="none"
             strokeLinecap="round"
           />
           <ellipse cx="318" cy="214" rx="70" ry="20" fill="var(--green)" />
           <ellipse cx="368" cy="226" rx="38" ry="12" fill="var(--green)" />
-          <g stroke="var(--charcoal)" strokeWidth="3" strokeLinejoin="round">
+          <g stroke="var(--color-ink)" strokeWidth="3" strokeLinejoin="round">
             <rect x="40" y="298" width="64" height="32" rx="5" fill="var(--terracotta)" />
             <rect x="108" y="298" width="64" height="32" rx="5" fill="var(--sand)" />
             <rect x="176" y="298" width="64" height="32" rx="5" fill="var(--green)" />
@@ -74,11 +74,11 @@ export default function Hero() {
               transform="rotate(-6 128 144)"
             />
           </g>
-          <path d="M150 112V70" stroke="var(--charcoal)" strokeWidth="3" strokeLinecap="round" />
+          <path d="M150 112V70" stroke="var(--color-ink)" strokeWidth="3" strokeLinecap="round" />
           <path
             d="M150 70l36 12-36 12z"
             fill="var(--terracotta)"
-            stroke="var(--charcoal)"
+            stroke="var(--color-ink)"
             strokeWidth="3"
             strokeLinejoin="round"
           />
