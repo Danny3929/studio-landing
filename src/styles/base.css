@@ -5,6 +5,16 @@
   box-sizing: border-box;
 }
 
+/* The nav bar is sticky, so jumping to a section must stop below it, not behind it. */
+html {
+  scroll-padding-top: var(--nav-height);
+}
+
+/* The skip link focuses <main>; it is not interactive, so it does not need a ring of its own. */
+main:focus {
+  outline: none;
+}
+
 body {
   margin: 0;
   background: var(--color-bg);
