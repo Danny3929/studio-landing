@@ -1,0 +1,90 @@
+/* Hero section. Mobile first: one column. Two columns from 900px up.
+   Only tokens (var(--...)) are used for colours, spacing and type. */
+
+.hero {
+  padding-block: var(--space-6) var(--space-8);
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.hero__eyebrow {
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.hero__title {
+  font-size: var(--text-hero);
+  overflow-wrap: break-word;
+}
+
+.hero__title-second {
+  display: block;
+  font-style: italic;
+  color: var(--color-cta);
+}
+
+.hero__lead {
+  margin: var(--space-3) 0 var(--space-4);
+  max-width: 36ch;
+  font-size: var(--text-lg);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* Drawing rule from the README: every outline is its stated width in screen pixels at any size. */
+.hero__art * {
+  vector-effect: non-scaling-stroke;
+}
+
+.hero__art {
+  width: 100%;
+  height: auto;
+  max-width: 520px;
+  margin-inline: auto;
+}
+
+/* Buttons (shared by later sections) */
+.btn {
+  display: inline-block;
+  padding: 14px 26px;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  border: 2px solid transparent;
+}
+
+.btn--primary {
+  background: var(--color-cta);
+  color: var(--color-cta-text);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+@media (min-width: 900px) {
+  .hero {
+    padding-block: var(--space-12) var(--space-12);
+  }
+
+  .hero__grid {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: var(--space-8);
+  }
+}
