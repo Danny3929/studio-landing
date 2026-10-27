@@ -1,0 +1,129 @@
+/* Featured work section. Mobile first: one tile per row. Three columns from 900px up.
+   Only tokens (var(--...)) are used for colours, spacing and type. */
+
+.work {
+  padding-block: var(--space-8);
+}
+
+.work__head {
+  margin-bottom: var(--space-4);
+}
+
+.work__eyebrow {
+  margin: 0 0 var(--space-1);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.work__title {
+  max-width: 24ch;
+  font-size: var(--text-2xl);
+  overflow-wrap: break-word;
+}
+
+/* Filter buttons */
+.work-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-bottom: var(--space-2);
+}
+
+.work-filter__button {
+  min-height: 44px;
+  padding: 0 var(--space-3);
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-accent);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.work-filter__button[aria-pressed='true'] {
+  background: var(--color-accent);
+  color: var(--cream);
+}
+
+.work__status {
+  margin: 0 0 var(--space-3);
+  font-size: var(--text-sm);
+}
+
+.work__empty {
+  margin: 0;
+  padding: var(--space-6) 0;
+  font-size: var(--text-lg);
+}
+
+/* Tiles */
+.work__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.work-card__figure {
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--sand);
+  color: var(--charcoal);
+}
+
+.work-card__pic {
+  height: 250px;
+}
+
+.work-card__pic--terracotta {
+  background: var(--terracotta);
+}
+
+.work-card__pic--green {
+  background: var(--green);
+}
+
+.work-card__pic--charcoal {
+  background: var(--charcoal);
+}
+
+.work-card__art {
+  width: 100%;
+  height: 100%;
+}
+
+/* Drawing rule from the README: every outline is its stated width in screen pixels at any size. */
+.work-card__art * {
+  vector-effect: non-scaling-stroke;
+}
+
+.work-card__caption {
+  padding: var(--space-2) var(--space-3);
+}
+
+.work-card__name {
+  font-size: var(--text-xl);
+  overflow-wrap: break-word;
+}
+
+.work-card__summary {
+  margin: var(--space-1) 0 0;
+  font-size: var(--text-sm);
+}
+
+@media (min-width: 900px) {
+  .work {
+    padding-block: var(--space-12);
+  }
+
+  .work__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
