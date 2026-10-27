@@ -1,0 +1,125 @@
+/* Services section ("bricks"). Mobile first: one brick under another.
+   From 900px up the bricks sit in two staggered rows, like brickwork.
+   Only tokens (var(--...)) are used for colours, spacing and type. */
+
+.services {
+  padding-block: var(--space-8);
+}
+
+.services__head {
+  margin-bottom: var(--space-6);
+}
+
+.services__eyebrow {
+  margin: 0 0 var(--space-1);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.services__title {
+  max-width: 24ch;
+  font-size: var(--text-2xl);
+  overflow-wrap: break-word;
+}
+
+.services__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.service {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-height: 200px;
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+}
+
+.service__icon {
+  width: 44px;
+  height: 44px;
+  margin-bottom: auto;
+  fill: none;
+  stroke: var(--icon-line);
+  stroke-width: 3;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+/* Drawing rule from the README: every outline is its stated width in screen pixels at any size. */
+.service__icon * {
+  vector-effect: non-scaling-stroke;
+}
+
+.service__title {
+  font-size: var(--text-xl);
+  overflow-wrap: break-word;
+}
+
+.service__benefit {
+  margin: 0;
+  font-size: var(--text-lg);
+}
+
+/* Brick colours. Each one sets its text colour and the two icon colours, so text and icon always match. */
+.service--terracotta {
+  background: var(--terracotta);
+  color: var(--cream);
+  --icon-line: var(--cream);
+  --icon-accent: var(--sand);
+}
+
+.service--sand {
+  background: var(--sand);
+  color: var(--charcoal);
+  --icon-line: var(--green);
+  --icon-accent: var(--terracotta);
+}
+
+.service--green {
+  background: var(--green);
+  color: var(--cream);
+  --icon-line: var(--cream);
+  --icon-accent: var(--sand);
+}
+
+.service--charcoal {
+  background: var(--charcoal);
+  color: var(--cream);
+  --icon-line: var(--cream);
+  --icon-accent: var(--sand);
+}
+
+@media (min-width: 900px) {
+  .services {
+    padding-block: var(--space-12);
+  }
+
+  .services__grid {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  /* Brickwork: widths repeat in a pattern of 4 (wide, narrow / narrow, wide), so any number of
+     services still fills each row of 12 columns. A last brick left on its own fills the whole row. */
+  .service:nth-child(4n + 1),
+  .service:nth-child(4n) {
+    grid-column: span 7;
+  }
+
+  .service:nth-child(4n + 2),
+  .service:nth-child(4n + 3) {
+    grid-column: span 5;
+  }
+
+  .service:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+}
