@@ -5,9 +5,10 @@
   box-sizing: border-box;
 }
 
-/* The nav bar is sticky, so jumping to a section must stop below it, not behind it. */
+/* The nav bar is sticky, so jumping to a section must stop below it, not behind it.
+   The bar is --nav-height plus its 1px bottom border. */
 html {
-  scroll-padding-top: var(--nav-height);
+  scroll-padding-top: calc(var(--nav-height) + 1px);
 }
 
 /* The skip link focuses <main>; it is not interactive, so it does not need a ring of its own. */
