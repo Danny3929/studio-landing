@@ -3,10 +3,11 @@ import Hero from './components/Hero.jsx'
 import Services from './components/Services.jsx'
 import Work from './components/Work.jsx'
 import Pricing from './components/Pricing.jsx'
+import Faq from './components/Faq.jsx'
 import Contact from './components/Contact.jsx'
 
 // The page is built one section at a time. Sections still to come: trust strip,
-// testimonials, FAQ and footer.
+// testimonials and footer.
 export default function App() {
   return (
     <>
@@ -19,6 +20,7 @@ export default function App() {
         <Services />
         <Work />
         <Pricing />
+        <Faq />
         <Contact />
       </main>
     </>
