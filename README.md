@@ -2,7 +2,7 @@
 
 A landing page for a fictional digital studio. Everything here is invented: no real client, company or asset.
 
-> Status (2026-10-27): work in progress. Built and checked so far: navigation bar, Hero, Services, Work (with filter) and Pricing (with monthly/annual toggle), FAQ accordion, Contact form (validates, but does not send: demo only), trust strip, footer, the light/dark theme toggle and the testimonials carousel. Still to build: scroll animations (that switch off for reduced motion), the Lighthouse run, screenshots and the deploy. Sections below marked "TODO" are filled in as the work is done.
+> Status (2026-10-28): Lighthouse and screenshots complete. Built and checked: navigation bar, Hero, Services, Work (with filter), Pricing (with monthly/annual toggle), FAQ accordion, Contact form (validates, demo only), trust strip, footer, light/dark theme toggle, testimonials carousel, favicon, robots.txt. Still to do: scroll animations (reduced motion), deploy.
 
 ## Design decisions
 
@@ -42,7 +42,7 @@ A landing page for a fictional digital studio. Everything here is invented: no r
 | Accent (links, tags, icons) | Deep green | `#2F4A3A` |
 | Soft background (cards, strips) | Sand | `#EADFC8` |
 
-The dark theme is not designed yet (TODO). It will be checked the same way.
+The dark theme is described in the next section, with its measured contrast.
 
 ### Dark theme (added 2026-10-28)
 The theme follows the visitor's system setting until they press the button; then their choice is saved in the browser (`localStorage`, key `jenga-theme`, value `light` or `dark`) and wins. A small script in `index.html` sets the theme before the page paints, so there is no white flash.
@@ -96,10 +96,49 @@ Why B and not A or C: TODO (Dan: write this in your own words, it is an Explain-
 An 8px scale: 8, 16, 24, 32, 48, 64, 96.
 
 ## Screenshots
-TODO (desktop and mobile).
+
+Desktop (1280 px, light theme — full page):
+
+![Desktop screenshot](docs/laptop-1280-light.webp)
+
+Mobile (390 px, light theme — full page):
+
+![Mobile screenshot](docs/phone-390-light.webp)
+
+Dark theme (hero section, 1440 px):
+
+![Dark theme desktop](docs/screenshot-desktop.png)
 
 ## Lighthouse
-TODO (mobile, all four scores 90+, with a screenshot).
+
+Measured on 2026-10-28, mobile preset, against the production build (`npm run build`), served locally with `npx vite preview`. Tool: Lighthouse 13.6.0 via Node.
+
+| Category | Score | Target |
+|---|---|---|
+| Performance | **99** | 90 |
+| Accessibility | **100** | 90 |
+| Best Practices | **100** | 90 |
+| SEO | **100** | 90 |
+
+Key speed numbers: First Contentful Paint 1.8 s · Largest Contentful Paint 1.8 s · Total Blocking Time 0 ms · Cumulative Layout Shift 0.
+
+The full report is saved at `docs/lighthouse-report.html`. A screenshot of one report (the first of three runs):
+
+![Lighthouse mobile report](docs/lighthouse-mobile-report.webp)
+
+**How to read these numbers honestly**
+- Repeated runs vary a little: Performance was 97 to 99 across nine runs, and the other three categories were 100 every time after the favicon and `robots.txt` were added. Before those two files, Best Practices was 96 (a 404 for `favicon.ico`) and SEO was 91 (no valid `robots.txt`).
+- Lighthouse's headless Chrome follows the computer's colour setting, and this PC is set to dark, so **these runs measured the dark theme**. The light theme was checked for contrast with our own script (every visible text at least 4.5:1) but not with Lighthouse itself.
+- These are local numbers (no HTTPS, no server compression or caching). Run Lighthouse or PageSpeed Insights again on the live URL after the deploy and update this table.
+
+**To rerun:**
+
+```
+npm run build
+npx vite preview --port 4815
+# in a second terminal, from %TEMP%\lh-tool:
+node node_modules/lighthouse/cli/index.js http://127.0.0.1:4815/ --output html --output-path docs/lighthouse-report.html --form-factor mobile --chrome-flags="--headless --no-sandbox"
+```
 
 ## Explain-it
 TODO. The three questions from the task guide:
