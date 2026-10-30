@@ -46,7 +46,11 @@ export default function Nav() {
           <ul className="nav__list">
             {nav.links.map((link) => (
               <li key={link.href}>
-                <a className="nav__link" href={link.href} onClick={close}>
+                <a
+                  className={link.cta ? 'nav__link nav__cta' : 'nav__link'}
+                  href={link.href}
+                  onClick={close}
+                >
                   {link.label}
                 </a>
               </li>

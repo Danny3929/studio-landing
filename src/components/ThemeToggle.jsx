@@ -8,6 +8,9 @@ export default function ThemeToggle({ dark, onToggle, ref }) {
         <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" strokeWidth="2.5" />
         <path d="M12 4a8 8 0 0 0 0 16z" fill="currentColor" />
       </svg>
+      <span className="theme-toggle__word" aria-hidden="true">
+        Theme
+      </span>
       <span className="visually-hidden">Dark theme</span>
     </button>
   )
