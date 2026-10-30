@@ -16,8 +16,9 @@ export default function Footer() {
           </p>
           <p className="footer__text">{footer.description}</p>
           <p className="footer__text">
-            <a className="footer__link" href={`mailto:${footer.email}`}>
-              {footer.emailLabel}: {footer.email}
+            {footer.emailLabel}:{' '}
+            <a className="footer__email" href={`mailto:${footer.email}`}>
+              {footer.email}
             </a>
           </p>
         </div>

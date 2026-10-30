@@ -51,6 +51,20 @@
   overflow-wrap: anywhere;
 }
 
+.footer__email {
+  color: var(--cream);
+  font-weight: 700;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+/* Underlined only while hovered or focused; the bold weight marks it as a link the rest of the time. */
+.footer__email:hover,
+.footer__email:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
 .footer__legal {
   margin: var(--space-6) 0 0;
   padding-top: var(--space-3);
