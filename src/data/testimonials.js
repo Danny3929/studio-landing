@@ -5,7 +5,7 @@ export const testimonialsIntro = {
   eyebrow: 'Testimonials',
   heading: 'What our clients say',
   note: 'Clients and quotes are invented for a training project.',
-  interval: 7000,
+  interval: 5000,
 }
 
 export const testimonials = [
