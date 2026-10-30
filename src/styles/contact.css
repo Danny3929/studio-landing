@@ -143,3 +143,21 @@ textarea.field__control {
     align-items: start;
   }
 }
+
+/* Tap-to-call: on a phone the link opens the dialler with the full number typed in. */
+.contact__phone {
+  margin: var(--space-2) 0 0;
+}
+
+.contact__phone-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--color-text);
+  font-weight: 700;
+  text-underline-offset: 4px;
+}
+
+.contact__phone-link:hover {
+  color: var(--color-accent);
+}

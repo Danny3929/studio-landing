@@ -15,6 +15,14 @@ export const contactIntro = {
   },
 }
 
+// A clearly fictional number (the +254 700 000 000 style is not a real line). Change both
+// values together: `display` is what people read, `tel` is what the phone dials (digits and + only).
+export const contactPhone = {
+  label: 'Prefer to call?',
+  display: '+254 700 000 000',
+  tel: '+254700000000',
+}
+
 export const limits = {
   nameMax: 80,
   messageMin: 20,

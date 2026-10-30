@@ -1,4 +1,4 @@
-import { contactIntro } from '../data/contact.js'
+import { contactIntro, contactPhone } from '../data/contact.js'
 import ContactForm from './ContactForm.jsx'
 import '../styles/contact.css'
 
@@ -13,6 +13,12 @@ export default function Contact() {
             {contactIntro.heading}
           </h2>
           <p className="contact__note">{contactIntro.note}</p>
+          <p className="contact__phone">
+            {contactPhone.label}{' '}
+            <a className="contact__phone-link" href={`tel:${contactPhone.tel}`}>
+              {contactPhone.display}
+            </a>
+          </p>
         </div>
         <ContactForm />
       </div>
