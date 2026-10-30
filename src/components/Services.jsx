@@ -6,7 +6,7 @@ import '../styles/services.css'
 // Adding a service means adding an entry to that file; this component does not change.
 export default function Services() {
   return (
-    <section id="services" className="services" aria-labelledby="services-title">
+    <section data-reveal id="services" className="services" aria-labelledby="services-title">
       <div className="container">
         <div className="services__head">
           <p className="services__eyebrow">{servicesIntro.eyebrow}</p>

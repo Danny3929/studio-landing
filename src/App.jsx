@@ -8,9 +8,12 @@ import Contact from './components/Contact.jsx'
 import TrustStrip from './components/TrustStrip.jsx'
 import Footer from './components/Footer.jsx'
 import Testimonials from './components/Testimonials.jsx'
+import useScrollReveal from './hooks/useScrollReveal.js'
+import './styles/reveal.css'
 
-// The page is built one section at a time. Still to come: scroll animations.
+// Sections below the first screen fade in once as they scroll into view.
 export default function App() {
+  useScrollReveal()
   return (
     <>
       <a className="skip-link" href="#main">

@@ -5,7 +5,7 @@ import '../styles/contact.css'
 // The contact section: heading, a short note and the form.
 export default function Contact() {
   return (
-    <section id="contact" className="contact" aria-labelledby="contact-title">
+    <section data-reveal id="contact" className="contact" aria-labelledby="contact-title">
       <div className="container contact__grid">
         <div className="contact__head">
           <p className="contact__eyebrow">{contactIntro.eyebrow}</p>

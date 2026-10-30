@@ -2,7 +2,7 @@
 
 A landing page for a fictional digital studio. Everything here is invented: no real client, company or asset.
 
-> Status (2026-10-28): Lighthouse and screenshots complete. Built and checked: navigation bar, Hero, Services, Work (with filter), Pricing (with monthly/annual toggle), FAQ accordion, Contact form (validates, demo only), trust strip, footer, light/dark theme toggle, testimonials carousel, favicon, robots.txt. Still to do: scroll animations (reduced motion), deploy.
+> Status (2026-10-28): Lighthouse and screenshots complete. Built and checked: navigation bar, Hero, Services, Work (with filter), Pricing (with monthly/annual toggle), FAQ accordion, Contact form (validates, demo only), trust strip, footer, light/dark theme toggle, testimonials carousel, favicon, robots.txt, scroll fade-in (off for reduced motion). Still to do: deploy.
 
 ## Design decisions
 
@@ -145,3 +145,7 @@ TODO. The three questions from the task guide:
 1. Why did you structure your components the way you did? What would you split further?
 2. Which accessibility problem did you find and fix, and how did you find it?
 3. What did the AI get wrong, and how did you notice?
+
+## Scroll animations
+Services, Work, Testimonials, Pricing, FAQ and Contact fade in and rise 16px once (0.5 s) as they scroll into view. The Hero, trust strip and footer do not animate. Sections stay fully visible when the visitor prefers reduced motion, when `IntersectionObserver` is missing, when scripts fail, and in print. Keyboard focus or a link jump into a hidden section reveals it at once. Only opacity and transform change, so nothing moves in the layout. Code: `src/hooks/useScrollReveal.js` and `src/styles/reveal.css`.
+Checked in a real browser (14 checks, all pass), including: no layout shift, reveal on focus and on a nav jump, reduced motion, no `IntersectionObserver`, print. Break test: removing both reduced-motion safeguards made the reduced-motion and print checks fail. Not re-run after this change: the earlier section suites and Lighthouse.

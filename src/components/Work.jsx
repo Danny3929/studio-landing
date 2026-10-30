@@ -11,7 +11,7 @@ export default function Work() {
   const shown = active === 'all' ? projects : projects.filter((project) => project.categories.includes(active))
 
   return (
-    <section id="work" className="work" aria-labelledby="work-title">
+    <section data-reveal id="work" className="work" aria-labelledby="work-title">
       <div className="container">
         <div className="work__head">
           <p className="work__eyebrow">{workIntro.eyebrow}</p>

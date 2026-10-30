@@ -16,7 +16,7 @@ export default function Pricing() {
   const saveNote = monthsFree > 0 ? `${monthsFree} months free` : ''
 
   return (
-    <section id="pricing" className="pricing" aria-labelledby="pricing-title">
+    <section data-reveal id="pricing" className="pricing" aria-labelledby="pricing-title">
       <div className="container">
         <div className="pricing__head">
           <p className="pricing__eyebrow">{pricingIntro.eyebrow}</p>

@@ -12,7 +12,7 @@ export default function Faq() {
   }
 
   return (
-    <section id="faq" className="faq" aria-labelledby="faq-title">
+    <section data-reveal id="faq" className="faq" aria-labelledby="faq-title">
       <div className="container faq__grid">
         <div className="faq__head">
           <p className="faq__eyebrow">{faqIntro.eyebrow}</p>

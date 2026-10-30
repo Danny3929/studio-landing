@@ -12,7 +12,7 @@ export default function Testimonials() {
   if (total === 0) return null
 
   return (
-    <section id="testimonials" className="testimonials" aria-labelledby="testimonials-title">
+    <section data-reveal id="testimonials" className="testimonials" aria-labelledby="testimonials-title">
       <div className="container">
         <p className="testimonials__eyebrow">{testimonialsIntro.eyebrow}</p>
         <h2 id="testimonials-title" className="testimonials__title">
