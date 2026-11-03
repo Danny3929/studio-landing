@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Jenga Studios | Brand and web studio in Nairobi</title>
+    <meta
+      name="description"
+      content="Jenga Studios helps Kenyan businesses build a brand people remember and a website that brings them customers. (Fictional studio for a training project.)"
+    />
+    <!-- Sets the theme before the page paints, so a dark-mode visitor never sees a white flash.
+         Same rule as src/hooks/useTheme.js: a saved "light" or "dark" wins, otherwise follow the system. -->
+    <script>
+      (function () {
+        var theme = null;
+        try { theme = localStorage.getItem('jenga-theme'); } catch (e) {}
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+/* Footer: charcoal block with cream text. Mobile first: one column. Two columns from 900px up.
+   The keyboard focus ring is cream here, because the usual green ring is almost invisible on charcoal. */
+
+.footer {
+  padding-block: var(--space-8) var(--space-4);
+  /* The footer is charcoal in both themes, so it uses the palette colour, not the text role (which turns cream in dark). */
+  background: var(--charcoal);
+  color: var(--cream);
+}
+
+.footer :focus-visible {
+  outline-color: var(--cream);
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+.footer__brand {
+  margin: 0 0 var(--space-1);
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 700;
+}
+
+.footer__dot {
+  color: var(--sand);
+}
+
+.footer__text {
+  max-width: 44ch;
+  margin: 0 0 var(--space-1);
+}
+
+.footer__list {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--cream);
+  text-underline-offset: 4px;
+  overflow-wrap: anywhere;
+}
+
+.footer__email {
+  color: var(--cream);
+  font-weight: 700;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+/* Underlined only while hovered or focused; the bold weight marks it as a link the rest of the time. */
+.footer__email:hover,
+.footer__email:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.footer__legal {
+  margin: var(--space-6) 0 0;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--sand);
+  font-size: var(--text-sm);
+}
+
+@media (min-width: 900px) {
+  .footer__grid {
+    grid-template-columns: 1.4fr 1fr;
+    gap: var(--space-8);
+  }
+}

@@ -1,0 +1,172 @@
+/* Pricing section. Mobile first: one card per row, featured tier first. Three columns from 900px up,
+   with each card taller than the last (the "staircase"). Only tokens are used for colour, space and type. */
+
+.pricing {
+  padding-block: var(--space-8);
+}
+
+.pricing__head {
+  margin-bottom: var(--space-4);
+}
+
+.pricing__eyebrow {
+  margin: 0 0 var(--space-1);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.pricing__title {
+  max-width: 24ch;
+  font-size: var(--text-2xl);
+  overflow-wrap: break-word;
+}
+
+.pricing__note {
+  max-width: 60ch;
+  margin: var(--space-2) 0 0;
+}
+
+/* Billing toggle */
+.billing {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-bottom: var(--space-2);
+}
+
+.billing__button {
+  min-height: 44px;
+  padding: 0 var(--space-3);
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-accent);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.billing__button[aria-pressed='true'] {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+.billing__save {
+  font-weight: 400;
+}
+
+.pricing__status {
+  margin: 0 0 var(--space-3);
+  font-size: var(--text-sm);
+}
+
+/* Cards */
+.pricing__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tier {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-3);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+/* The highlighted tier. No CSS `order`: the visual order must match the Tab order. */
+.tier--featured {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+.tier__badge {
+  align-self: flex-start;
+  margin: 0 0 var(--space-1);
+  padding: 4px var(--space-2);
+  border-radius: var(--radius-pill);
+  background: var(--color-on-accent);
+  color: var(--color-accent);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.tier__name {
+  margin: 0;
+  font-size: var(--text-xl);
+}
+
+.tier__blurb {
+  margin: var(--space-1) 0 var(--space-3);
+}
+
+.tier__price {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 var(--space-2);
+}
+
+.tier__label {
+  font-size: var(--text-sm);
+}
+
+.tier__amount {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  line-height: var(--leading-heading);
+}
+
+.tier__amount--small {
+  font-size: var(--text-lg);
+}
+
+.tier__unit {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 400;
+}
+
+.tier__features {
+  flex: 1;
+  margin: var(--space-2) 0 var(--space-3);
+  padding-left: var(--space-3);
+}
+
+.tier__cta {
+  align-self: flex-start;
+}
+
+/* Button on the highlighted card: the colours swap, which keeps the contrast high in both themes */
+.tier--featured .btn--primary {
+  background: var(--color-on-accent);
+  color: var(--color-accent);
+}
+
+@media (min-width: 900px) {
+  .pricing__grid {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: end;
+  }
+
+  /* the staircase: each tier is taller than the one before */
+  .tier:nth-child(1) {
+    min-height: 480px;
+  }
+
+  .tier:nth-child(2) {
+    min-height: 540px;
+  }
+
+  .tier:nth-child(3) {
+    min-height: 600px;
+  }
+}

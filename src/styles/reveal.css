@@ -1,0 +1,21 @@
+/* Scroll reveal: only active once useScrollReveal sets data-reveal-ready on <html>.
+   Without JavaScript, or with reduced motion, sections are plain and visible. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal-ready] [data-reveal]:not([data-revealed]) {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  [data-reveal-ready] [data-reveal] {
+    transition:
+      opacity 0.5s ease-out,
+      transform 0.5s ease-out;
+  }
+}
+
+/* Never leave a section hidden under reduced motion or in print. */
+@media (prefers-reduced-motion: reduce), print {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

@@ -1,0 +1,198 @@
+/* Navigation bar. Mobile first: links hidden behind the Menu button. From 900px up they sit in a row.
+   Only tokens (var(--...)) are used for colours, spacing and type. */
+
+/* Skip link: invisible until a keyboard user tabs to it, so they can jump past the menu. */
+.skip-link {
+  position: absolute;
+  left: var(--space-2);
+  top: -100px;
+  z-index: 30;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-md);
+  background: var(--color-cta);
+  color: var(--color-cta-text);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: var(--space-2);
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-surface);
+}
+
+.nav__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--nav-height);
+}
+
+.nav__brand {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.nav__dot {
+  color: var(--color-cta);
+}
+
+.nav__tools {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-left: auto;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-text);
+  font: inherit;
+  font-size: var(--text-sm, 0.875rem);
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  color: var(--color-accent);
+}
+
+/* The word is for laptops; on a phone only the icon shows. */
+.theme-toggle__word {
+  display: none;
+}
+
+/* Dark theme on: the half-moon icon flips, so the state shows without a bright fill. */
+.theme-toggle[aria-pressed='true'] svg {
+  transform: scaleX(-1);
+}
+
+.nav__toggle {
+  min-height: 44px;
+  padding: 0 var(--space-2);
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* The panel under the bar. Hidden with display:none so closed links are skipped by the Tab key. */
+.nav__menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  padding: var(--space-1) var(--space-3) var(--space-3);
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-surface);
+}
+
+.nav__menu.is-open {
+  display: block;
+}
+
+.nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav__link {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--color-text);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.nav__link:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+/* Contact is the one call-to-action: a filled button, same look as the Hero button. */
+.nav__cta {
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-pill);
+  background: var(--color-cta);
+  color: var(--color-cta-text);
+  font-weight: 700;
+}
+
+.nav__cta:hover {
+  color: var(--color-cta-text);
+  background: var(--color-cta);
+  text-decoration: underline;
+}
+
+@media (min-width: 900px) {
+  .theme-toggle {
+    padding-inline: var(--space-1);
+  }
+
+  .theme-toggle__word {
+    display: inline;
+  }
+
+  .nav__list {
+    align-items: center;
+  }
+
+  .nav__toggle {
+    display: none;
+  }
+
+  /* Laptop: logo, theme button, then the links pushed to the right. Same order as the Tab order. */
+  .nav__tools {
+    margin-left: var(--space-2);
+  }
+
+  .nav__menu {
+    display: block;
+    position: static;
+    margin-left: auto;
+    padding: 0;
+    background: none;
+    border: 0;
+  }
+
+  .nav__list {
+    flex-direction: row;
+    gap: var(--space-4);
+  }
+
+  .nav__link {
+    min-height: 0;
+  }
+
+  .nav__cta {
+    min-height: 44px;
+  }
+}

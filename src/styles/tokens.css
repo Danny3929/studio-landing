@@ -1,0 +1,69 @@
+/* Design tokens for Jenga Studios. Every colour, space and size used on the page comes from here.
+   Values are the decisions recorded in the README ("Design decisions"). */
+:root {
+  /* colour (light theme) */
+  --cream: #faf3e8;
+  --charcoal: #2b2623;
+  --terracotta: #b5502f;
+  --green: #2f4a3a;
+  --sand: #eadfc8;
+
+  /* roles: what each colour is for */
+  --color-bg: var(--cream);
+  --color-text: var(--charcoal);
+  --color-cta: var(--terracotta);
+  --color-cta-text: var(--cream);
+  --color-accent: var(--green);
+  --color-surface: var(--sand);
+  --color-on-accent: var(--cream); /* text or small shapes sitting on the accent colour */
+  --color-highlight: var(--terracotta); /* terracotta used as text on the page background */
+  --color-field: var(--cream); /* background of form fields */
+  --color-ink: var(--charcoal); /* outline colour of the drawings */
+  color-scheme: light;
+
+  /* spacing: 8px scale */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-6: 48px;
+  --space-8: 64px;
+  --space-12: 96px;
+
+  /* type */
+  --font-heading: 'Fraunces', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --text-sm: 0.875rem;
+  --text-base: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.625rem;
+  --text-2xl: clamp(2rem, 3.6vw, 2.75rem);
+  --text-hero: clamp(2.375rem, 5.2vw, 3.875rem);
+  --leading-heading: 1.1;
+  --leading-body: 1.6;
+
+  /* shape */
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  /* layout */
+  --content-width: 1120px;
+  --nav-height: 68px;
+}
+
+/* Dark theme. It only changes the role colours above, so no component needs its own dark rules.
+   Two shades are new, both made from our palette so that text passes 4.5:1 on a dark page:
+   a lighter green (accent) and a lighter terracotta (highlight). Measured, on the dark page colour:
+   cream text 15.83:1, light green 9.05:1, light terracotta 5.33:1. The CTA button keeps its terracotta. */
+:root[data-theme='dark'] {
+  --color-bg: #1d1917;
+  --color-text: var(--cream);
+  --color-surface: var(--charcoal);
+  --color-accent: #9cc4ab;
+  --color-on-accent: #1d1917;
+  --color-highlight: #d9714d;
+  --color-field: #1d1917;
+  --color-ink: var(--cream);
+  color-scheme: dark;
+}
