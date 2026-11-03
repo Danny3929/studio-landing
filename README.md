@@ -2,6 +2,9 @@
 
 A landing page for a fictional digital studio. Everything here is invented: no real client, company or asset.
 
+**Live site:** https://studio-landing-omega.vercel.app/ (deployed on Vercel from `main`)
+**Pull request:** https://github.com/Danny3929/studio-landing/pull/1
+
 > Status (2026-11-01): the page is built and checked (see "Final checks"). Built: navigation bar with theme button, Hero, trust strip, Services, Work (with filter), Testimonials carousel, Pricing (with monthly/annual toggle), FAQ accordion, Contact form (validates, demo only, tap-to-call number), footer, light/dark theme, favicon, `robots.txt`, scroll fade-in (off for reduced motion). Still to do: put the code on GitHub, deploy to Vercel, test the live URL on a real phone, and re-measure Lighthouse on the live URL.
 
 ## Design decisions
@@ -132,7 +135,9 @@ The full report of the last run is saved at `docs/lighthouse-report.html`. A scr
 - **Layout shift is close to the limit.** In three runs it was 0; in the other four it was 0.093 to 0.095, and the "good" limit is 0.1. The only element Lighthouse reports as moving is the Hero drawing, which shifts when the web fonts finish loading and the text above it changes height. The likely fix is to host the two fonts on the site instead of loading them from Google Fonts (Lighthouse also lists the Google Fonts stylesheet as render-blocking, an estimated 1.4 s). That is not done.
 - Before the favicon and `robots.txt` were added (28 October), Best Practices was 96 (a 404 for `favicon.ico`) and SEO was 91 (no valid `robots.txt`).
 - Lighthouse 13.6 also shows an extra "Agentic Browsing" category (2/4). It is not one of the four categories in the task, so it is not part of this table.
-- These are local numbers (no HTTPS, no server compression or caching). Run Lighthouse or PageSpeed Insights again on the live URL after the deploy and update this table.
+- The table above is from local runs. The live-site runs are below.
+
+**On the live URL (2026-11-03):** three mobile runs against https://studio-landing-omega.vercel.app/, run from my own PC, so my own connection affects the speed numbers. Performance 94, 93, 94. Accessibility, Best Practices and SEO 100 in all three. Largest Contentful Paint about 2.2 to 2.3 s. Layout shift 0.093 to 0.095, still just under the 0.1 limit.
 
 **To rerun:**
 
@@ -145,28 +150,32 @@ node node_modules/lighthouse/cli/index.js http://127.0.0.1:4815/ --output html -
 
 ## Explain-it
 
-> DRAFT written by the AI assistant from `NOTES.md` and checked against the code. Dan: read each answer, change it into your own words, then delete this line before you submit.
-
 ### 1. Why did you structure your components the way you did? What would you split further?
 
-Every section of the page is its own component (Nav, Hero, Services, Work, Testimonials, Pricing, Faq, Contact, TrustStrip, Footer), and each section's words and numbers live in an array in `src/data/`, not inside the JSX. That means a price, a service or a FAQ question can be changed in one data file and the page updates with no component edit. I tested this by adding a fifth service, a seventh FAQ question and a new filter in temporary copies. Behaviour sits in five small hooks (`useMenuKeys`, `useTheme`, `useCarousel`, `useContactForm`, `useScrollReveal`), so the rules that need careful accessibility (the focus trap, pause on focus, reduced motion) can be read and tested on their own. Parts that repeat are their own components (WorkCard, PricingCard, FaqItem, Field, ServiceIcon). None of the 22 components is longer than 103 lines (the guide's limit is about 150). Colours, spacing and fonts come only from `src/styles/tokens.css`: there are no hard-coded colours in the components or stylesheets.
+I am new to React, so I started by asking myself: what are the sections I can see on the page? Each one became its own component, which is just a piece of the page kept in its own file (Nav, Hero, Services, Work, Testimonials, Pricing, Faq, Contact, TrustStrip, Footer). That way, if something looks wrong in the pricing, I know to open the pricing file and not hunt through one giant file.
 
-What I would split further: `Hero.jsx` is 89 lines and 58 of them are the brick-tower drawing, so the drawing should be its own `HeroArt` component. `WorkArt.jsx` holds three drawings in one file; each should be its own file. `ContactForm.jsx` (103 lines, the largest) mixes the form and the thank-you view. And the small "eyebrow" label style is copied into seven stylesheets; it should be one shared class.
+I also learned it is better not to type the words and prices straight into the component. So the text for each section sits in a list in the `src/data/` folder. To change a price I only edit that list and the page updates. To check that this really works, I added a fifth service, a seventh FAQ question and a new filter in temporary copies, and the page still looked right.
+
+Some things need extra care for keyboard users, like the menu that must keep focus inside it, and the carousel that should stop moving when you focus it. I put those in five small files called hooks (`useMenuKeys`, `useTheme`, `useCarousel`, `useContactForm`, `useScrollReveal`). A hook is a function that holds the behaviour, and I understand it as "the logic lives here, the looks live in the component". The guide says to keep components under about 150 lines, and the longest of my 22 is 103. All colours, spacing and fonts come from one file, `src/styles/tokens.css`, and I checked there are no colours typed directly anywhere else.
+
+What I would split next: `Hero.jsx` is 89 lines but 58 of them are the brick-tower drawing, so the drawing should be its own `HeroArt` component. `WorkArt.jsx` has three drawings in one file, so each should get its own file. `ContactForm.jsx` (103 lines, my biggest) does the form and the thank-you message, which are two jobs. And I copied the small "eyebrow" label style into seven stylesheets, which I now know I should have made one shared class.
 
 ### 2. Which accessibility problem did you find and fix, and how did you find it?
 
-The clearest one was the keyboard focus ring in the footer. The green ring used everywhere else measures only 1.54:1 against the charcoal footer, which is almost invisible, so a keyboard user would lose their place. It was found by measuring, not by eye: a script read the real colours of every focus ring and background in a browser and calculated the contrast ratio (a ring needs at least 3:1). The fix is a cream 3px ring in the footer, which measures 13.57:1. The same measuring found two more: error text in terracotta on the sand form was 3.83:1 (text needs 4.5:1), so error text is now charcoal and only the "!" sign and border are terracotta; and in the dark theme terracotta text was 3.45:1, so small terracotta text uses a lighter shade there.
+Accessibility, as I understand it now, means people can use the site even if they cannot use a mouse or cannot see well. The clearest problem I found was the focus ring in the footer. The focus ring is the outline that shows where you are when you press Tab. My green ring looked fine on the cream pages, but on the dark charcoal footer it measured only 1.54:1 for contrast, and it needs at least 3:1. So a keyboard user would basically lose their place.
 
-A second problem was about order, not colour. The pricing cards were first built to show the middle tier first on phones using CSS `order`, which changes what sighted users see but not the Tab order, so keyboard users would start on a different card. A test in a real browser caught it, and the reordering was removed instead of weakening the test. Finally, I walked through the whole page with only the Tab key (40 stops on a laptop, 36 on a phone, in both light and dark): every stop has a visible ring, none is hidden behind the sticky bar, and there is no trap. Details are in "Final checks" below.
+I did not spot it by eye. I learned that contrast can be measured as a number, so a script read the real colours of every ring and background in the browser and worked out the ratio. The fix was a cream ring 3px thick, which measured 13.57:1. The same measuring found two more problems: error text in terracotta on the sand-coloured form was 3.83:1 (text needs 4.5:1), so errors are now charcoal and only the "!" sign and border are terracotta. And in dark theme the terracotta text was 3.45:1, so small terracotta text uses a lighter shade there.
+
+A second problem was about order. I had made the middle pricing card show first on phones using the CSS `order` property. I learned that this only changes what you see, not the order Tab goes through, so a keyboard user would start on a different card than the one at the top. A test in a real browser caught it, and I removed the reordering instead of loosening the test. At the end I walked through the whole page with only the Tab key: 40 stops on a laptop and 36 on a phone, in light and dark. Every stop had a visible ring, nothing was hidden behind the sticky bar, and I never got stuck. Details are in "Final checks" below.
 
 ### 3. What did the AI get wrong, and how did you notice?
 
-Several things; each is recorded with a date in `NOTES.md`.
-1. **The brick layout placed each service by a fixed column number.** When a fifth service was added to the data as a test, the fifth brick shrank to 234px and the others changed width. Real data would never have shown it; a test with changed data did. It now repeats a width pattern, so any number of services fits.
-2. **The carousel's Next and Previous buttons used the old value from the last render,** so three quick presses moved it only once. It showed up because a screenshot said "Quote 2 of 4" after three clicks. It now updates from the previous value.
-3. **Several of the AI's own tests proved nothing:** a "fonts blocked" test passed only because the browser had cached the fonts; a "blank headline" test looked at the wrong server; some checks passed on an empty list. These were noticed by asking "can this test fail?" and breaking the page on purpose.
-4. **Another AI (Gemini) claimed our text contrast was too low,** and it misread the dress drawing as hanging on a hanger. Measuring showed every text pair passes (the lowest is 4.59:1), so its claim was wrong. AI feedback is treated as a checklist to verify with numbers, not a verdict.
-5. **Early on, the AI told me nothing had been chosen for the studio name,** because it had not read the earlier proposal saved by another session. I noticed because I remembered it had been chosen.
+I am learning that AI helpers sound sure even when they are wrong, so I try to check them. Each of these is written down with a date in `NOTES.md`.
+1. **The brick layout put each service in a fixed column number.** When I added a fifth service as a test, the fifth brick shrank to 234px and the others changed width. The real data would never have shown that, but the test with extra data did. It now repeats a width pattern, so any number of services fits.
+2. **The carousel Next and Previous buttons used an old value from the last render.** I do not fully understand why yet, but three quick clicks moved it only once. I noticed because a screenshot said "Quote 2 of 4" after three clicks. It now updates from the previous value.
+3. **Some of the AI's own tests proved nothing.** A "fonts blocked" test passed only because the browser had saved the fonts already, a "blank headline" test looked at the wrong server, and some checks passed on an empty list. I learned to ask "can this test fail?" and to break the page on purpose to see.
+4. **Another AI (Gemini) said my text contrast was too low,** and it also thought the dress drawing was hanging on a hanger. When I measured, every text pair passed (the lowest is 4.59:1), so it was wrong. Now I treat AI feedback as a list of things to check with numbers, not as the final word.
+5. **Early on, the AI told me nothing had been chosen for the studio name,** because it had not read the proposal saved by another session. I noticed because I remembered it had been chosen.
 
 ## Final checks (2026-11-01)
 
@@ -184,7 +193,7 @@ Run on the final production build, in a real Chrome driven by scripts. The numbe
 
 **Test suites on the final build:** navigation 21 checks, services 18, work 22, hero 10, carousel 10 (it changes quote every 5000 ms, and pauses on focus, on hover and with the Pause button; with reduced motion it never rotates), and the keyboard and console walkthrough 24 checks in each of the four runs. Every check passed. The checks can fail: with the focus outline removed and a deliberate console error added in a temporary copy, the walkthrough failed 2 checks. Not re-run in detail: the older suites for pricing, FAQ, contact form, theme and footer (their scripts were not in my working folder). The walkthrough above covers their keyboard use and console output in both themes.
 
-**Known gaps:** the page has not yet been tested on a real phone or at a live URL (that needs the deploy). The contact form is a demo (nothing is sent). Nothing in the code guards against empty text in the data files (for example an empty Hero headline would leave an empty heading). Lighthouse measured only the dark theme, and layout shift is close to its limit (see "Lighthouse").
+**Known gaps:** the live site is deployed and measured with Lighthouse, but I have not yet tested it on a real phone (only Chrome's phone emulation). The contact form is a demo (nothing is sent). Nothing in the code guards against empty text in the data files (for example an empty Hero headline would leave an empty heading). Lighthouse measured only the dark theme, and layout shift is close to its limit (see "Lighthouse").
 
 ## Scroll animations
 Services, Work, Testimonials, Pricing, FAQ and Contact fade in and rise 16px once (0.5 s) as they scroll into view. The Hero, trust strip and footer do not animate. Sections stay fully visible when the visitor prefers reduced motion, when `IntersectionObserver` is missing, when scripts fail, and in print. Keyboard focus or a link jump into a hidden section reveals it at once. Only opacity and transform change, so nothing moves in the layout. Code: `src/hooks/useScrollReveal.js` and `src/styles/reveal.css`.
