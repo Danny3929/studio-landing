@@ -2,6 +2,9 @@
 
 A landing page for a fictional digital studio. Everything here is invented: no real client, company or asset.
 
+**Live site:** https://studio-landing-omega.vercel.app/ (deployed on Vercel from `main`)
+**Pull request:** https://github.com/Danny3929/studio-landing/pull/1
+
 > Status (2026-11-01): the page is built and checked (see "Final checks"). Built: navigation bar with theme button, Hero, trust strip, Services, Work (with filter), Testimonials carousel, Pricing (with monthly/annual toggle), FAQ accordion, Contact form (validates, demo only, tap-to-call number), footer, light/dark theme, favicon, `robots.txt`, scroll fade-in (off for reduced motion). Still to do: put the code on GitHub, deploy to Vercel, test the live URL on a real phone, and re-measure Lighthouse on the live URL.
 
 ## Design decisions
@@ -132,7 +135,9 @@ The full report of the last run is saved at `docs/lighthouse-report.html`. A scr
 - **Layout shift is close to the limit.** In three runs it was 0; in the other four it was 0.093 to 0.095, and the "good" limit is 0.1. The only element Lighthouse reports as moving is the Hero drawing, which shifts when the web fonts finish loading and the text above it changes height. The likely fix is to host the two fonts on the site instead of loading them from Google Fonts (Lighthouse also lists the Google Fonts stylesheet as render-blocking, an estimated 1.4 s). That is not done.
 - Before the favicon and `robots.txt` were added (28 October), Best Practices was 96 (a 404 for `favicon.ico`) and SEO was 91 (no valid `robots.txt`).
 - Lighthouse 13.6 also shows an extra "Agentic Browsing" category (2/4). It is not one of the four categories in the task, so it is not part of this table.
-- These are local numbers (no HTTPS, no server compression or caching). Run Lighthouse or PageSpeed Insights again on the live URL after the deploy and update this table.
+- The table above is from local runs. The live-site runs are below.
+
+**On the live URL (2026-11-03):** three mobile runs against https://studio-landing-omega.vercel.app/, run from my own PC, so my own connection affects the speed numbers. Performance 94, 93, 94. Accessibility, Best Practices and SEO 100 in all three. Largest Contentful Paint about 2.2 to 2.3 s. Layout shift 0.093 to 0.095, still just under the 0.1 limit.
 
 **To rerun:**
 
@@ -144,8 +149,6 @@ node node_modules/lighthouse/cli/index.js http://127.0.0.1:4815/ --output html -
 ```
 
 ## Explain-it
-
-> DRAFT written by the AI assistant in a beginner voice, from `NOTES.md` and checked against the code. Dan: read each answer, fix anything that is not true for you, then delete this line before you submit.
 
 ### 1. Why did you structure your components the way you did? What would you split further?
 
@@ -190,7 +193,7 @@ Run on the final production build, in a real Chrome driven by scripts. The numbe
 
 **Test suites on the final build:** navigation 21 checks, services 18, work 22, hero 10, carousel 10 (it changes quote every 5000 ms, and pauses on focus, on hover and with the Pause button; with reduced motion it never rotates), and the keyboard and console walkthrough 24 checks in each of the four runs. Every check passed. The checks can fail: with the focus outline removed and a deliberate console error added in a temporary copy, the walkthrough failed 2 checks. Not re-run in detail: the older suites for pricing, FAQ, contact form, theme and footer (their scripts were not in my working folder). The walkthrough above covers their keyboard use and console output in both themes.
 
-**Known gaps:** the page has not yet been tested on a real phone or at a live URL (that needs the deploy). The contact form is a demo (nothing is sent). Nothing in the code guards against empty text in the data files (for example an empty Hero headline would leave an empty heading). Lighthouse measured only the dark theme, and layout shift is close to its limit (see "Lighthouse").
+**Known gaps:** the live site is deployed and measured with Lighthouse, but I have not yet tested it on a real phone (only Chrome's phone emulation). The contact form is a demo (nothing is sent). Nothing in the code guards against empty text in the data files (for example an empty Hero headline would leave an empty heading). Lighthouse measured only the dark theme, and layout shift is close to its limit (see "Lighthouse").
 
 ## Scroll animations
 Services, Work, Testimonials, Pricing, FAQ and Contact fade in and rise 16px once (0.5 s) as they scroll into view. The Hero, trust strip and footer do not animate. Sections stay fully visible when the visitor prefers reduced motion, when `IntersectionObserver` is missing, when scripts fail, and in print. Keyboard focus or a link jump into a hidden section reveals it at once. Only opacity and transform change, so nothing moves in the layout. Code: `src/hooks/useScrollReveal.js` and `src/styles/reveal.css`.
