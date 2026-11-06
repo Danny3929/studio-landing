@@ -5,7 +5,7 @@ A landing page for a fictional digital studio. Everything here is invented: no r
 **Live site:** https://studio-landing-omega.vercel.app/ (deployed on Vercel from `main`)
 **Pull request:** https://github.com/Danny3929/studio-landing/pull/1
 
-> Status (2026-11-01): the page is built and checked (see "Final checks"). Built: navigation bar with theme button, Hero, trust strip, Services, Work (with filter), Testimonials carousel, Pricing (with monthly/annual toggle), FAQ accordion, Contact form (validates, demo only, tap-to-call number), footer, light/dark theme, favicon, `robots.txt`, scroll fade-in (off for reduced motion). Still to do: put the code on GitHub, deploy to Vercel, test the live URL on a real phone, and re-measure Lighthouse on the live URL.
+> Status (2026-11-01): the page is built and checked (see "Final checks"). Built: navigation bar with theme button, Hero, trust strip, Services, Work (with filter), Testimonials carousel, Pricing (with monthly/annual toggle), FAQ accordion, Contact form (validates, demo only, tap-to-call number), footer, light/dark theme, favicon, `robots.txt`, scroll fade-in (off for reduced motion). The code is on GitHub, deployed to Vercel, re-measured with Lighthouse on the live URL, and tested on a real phone (2026-11-06).
 
 ## Design decisions
 
@@ -193,7 +193,7 @@ Run on the final production build, in a real Chrome driven by scripts. The numbe
 
 **Test suites on the final build:** navigation 21 checks, services 18, work 22, hero 10, carousel 10 (it changes quote every 5000 ms, and pauses on focus, on hover and with the Pause button; with reduced motion it never rotates), and the keyboard and console walkthrough 24 checks in each of the four runs. Every check passed. The checks can fail: with the focus outline removed and a deliberate console error added in a temporary copy, the walkthrough failed 2 checks. Not re-run in detail: the older suites for pricing, FAQ, contact form, theme and footer (their scripts were not in my working folder). The walkthrough above covers their keyboard use and console output in both themes.
 
-**Known gaps:** the live site is deployed and measured with Lighthouse, but I have not yet tested it on a real phone (only Chrome's phone emulation). The contact form is a demo (nothing is sent). Nothing in the code guards against empty text in the data files (for example an empty Hero headline would leave an empty heading). Lighthouse measured only the dark theme, and layout shift is close to its limit (see "Lighthouse").
+**Known gaps:** the live site is deployed, measured with Lighthouse, and was tested on a real phone on 2026-11-06. The contact form is a demo (nothing is sent). Nothing in the code guards against empty text in the data files (for example an empty Hero headline would leave an empty heading). Lighthouse measured only the dark theme, and layout shift is close to its limit (see "Lighthouse").
 
 ## Scroll animations
 Services, Work, Testimonials, Pricing, FAQ and Contact fade in and rise 16px once (0.5 s) as they scroll into view. The Hero, trust strip and footer do not animate. Sections stay fully visible when the visitor prefers reduced motion, when `IntersectionObserver` is missing, when scripts fail, and in print. Keyboard focus or a link jump into a hidden section reveals it at once. Only opacity and transform change, so nothing moves in the layout. Code: `src/hooks/useScrollReveal.js` and `src/styles/reveal.css`.
